@@ -90,7 +90,12 @@ for diversification analysis." />
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/Reckziegel/uncorbets/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -105,7 +110,7 @@ for diversification analysis." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Computes the Minimum Torsion Matrix</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/Reckziegel/uncorbets/blob/master/R/torsion.R'><code>R/torsion.R</code></a></small>
     <div class="hidden name"><code>torsion.Rd</code></div>
     </div>
 
@@ -114,7 +119,7 @@ for diversification analysis." />
 for diversification analysis.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>torsion</span><span class='op'>(</span><span class='va'>Sigma</span>, model <span class='op'>=</span> <span class='st'>"pca"</span>, method <span class='op'>=</span> <span class='st'>"approximate"</span>, max_niter <span class='op'>=</span> <span class='fl'>10000L</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>torsion</span><span class='op'>(</span><span class='va'>Sigma</span>, model <span class='op'>=</span> <span class='st'>"minimum-torsion"</span>, method <span class='op'>=</span> <span class='st'>"exact"</span>, max_niter <span class='op'>=</span> <span class='fl'>10000L</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
