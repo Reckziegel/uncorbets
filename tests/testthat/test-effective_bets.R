@@ -14,7 +14,7 @@ test_that("effective_bets()", {
   # overall structure
   expect_type(enb, "list")
   expect_length(enb, 2L)
-  expect_named(enb, c("allocation", "enb"))
+  expect_named(enb, c("p", "enb"))
 
   # Portfolio Allocation
   expect_length(enb[[1]], 4L)

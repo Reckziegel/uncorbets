@@ -4,7 +4,7 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
+```{r, include = FALSE, message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -21,6 +21,8 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/Reckziegel/uncorbets/workflows/R-CMD-check/badge.svg)](https://github.com/Reckziegel/uncorbets/actions)
 [![Travis build status](https://travis-ci.com/Reckziegel/uncorbets.svg?branch=main)](https://travis-ci.com/Reckziegel/uncorbets)
 <!-- badges: end -->
+
+> The Effective Number of Bets precisely quantify the diversification level, summarizing in one number the fine structure of diversification.
 
 ## Installation
 

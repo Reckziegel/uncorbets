@@ -7,18 +7,22 @@
 effective_bets(b, sigma, t)
 }
 \arguments{
-\item{b}{A vector of exposures.}
+\item{b}{A vector of exposures (allocations).}
 
 \item{sigma}{A \code{n x n} covariance matrix.}
 
 \item{t}{A \code{n x n} torsion matrix.}
 }
 \value{
-A \code{list} with the effective number of bets - enb - and the diversification probability distribution - p.
+A \code{list} of length 2 with:
+    \itemize{
+      \item \code{p}: the diversification probability distribution;
+      \item \code{enb}: the effective number of bets.
+    }
 }
 \description{
 Computes the diversification probability distribution and the effective number
-of bets an allocation.
+of bets in an allocation.
 }
 \details{
 Transcripted from the MATLAB code in \url{https://la.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors?s_tid=prof_contriblnk}.

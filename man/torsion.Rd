@@ -4,7 +4,7 @@
 \alias{torsion}
 \title{Computes the Minimum Torsion Matrix}
 \usage{
-torsion(Sigma, model = "pca", method = "approximate", max_niter = 10000L)
+torsion(Sigma, model = "minimum-torsion", method = "exact", max_niter = 10000L)
 }
 \arguments{
 \item{Sigma}{A \code{n x n} covariance matrix.}

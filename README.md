@@ -14,6 +14,10 @@ coverage](https://codecov.io/gh/Reckziegel/uncorbets/branch/main/graph/badge.svg
 status](https://travis-ci.com/Reckziegel/uncorbets.svg?branch=main)](https://travis-ci.com/Reckziegel/uncorbets)
 <!-- badges: end -->
 
+> The Effective Number of Bets precisely quantify the diversification
+> level, summarizing in one number the fine structure of
+> diversification.
+
 ## Installation
 
 You can install the development version of `uncorbets` from github with:

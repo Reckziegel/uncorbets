@@ -2,17 +2,17 @@
 % Please edit documentation in R/utils.R
 \name{sqrtm}
 \alias{sqrtm}
-\title{Returns the square root of a symmetric positive definite matrix}
+\title{MATLAB `sqrtm` functionality}
 \usage{
-sqrtm(A)
+sqrtm(x)
 }
 \arguments{
-\item{A}{A square matrix}
+\item{A}{A square matrix.}
 }
 \value{
-A quadratic matrix.
+A \code{matrix}.
 }
 \description{
-This function was copied and pasted from the \code{rrcov} package to avoid dependencies.
+This function returns the square root of a quadratic matrix.
 }
 \keyword{internal}

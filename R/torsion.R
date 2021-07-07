@@ -25,7 +25,7 @@
 #'
 #' # torsion
 #' torsion(Sigma = sigma, model = 'minimum-torsion', method ='exact')
-torsion <- function(Sigma, model = "pca", method = "approximate", max_niter = 10000L) {
+torsion <- function(Sigma, model = "minimum-torsion", method = "exact", max_niter = 10000L) {
 
   if (!(model %in% c('pca', 'minimum-torsion'))) {
     stop("Model must one of: 'pca' or 'minimum-torsion'", call. = FALSE)

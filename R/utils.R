@@ -1,23 +1,23 @@
-#' Returns the square root of a symmetric positive definite matrix
+#' MATLAB `sqrtm` functionality
 #'
-#' This function was copied and pasted from the \code{rrcov} package to avoid dependencies.
+#' This function returns the square root of a quadratic matrix.
 #'
-#' @param A A square matrix
+#' @param A A square matrix.
 #'
-#' @return A quadratic matrix.
+#' @return A \code{matrix}.
 #'
 #' @keywords internal
-sqrtm <- function(A) {
+sqrtm <- function(x) {
 
-  if (!is.matrix(A) || ncol(A) != nrow(A))
-    stop("The matrix A must be a square matrix\n", .call = FALSE)
+  if (!is_quadratic(x))
+    stop("The object `x` is not quadratic.", .call = FALSE)
 
-  ee <- eigen(A)
+  eig<- eigen(x)
 
-  if (any(ee$values < 0)) {
-    stop("The matrix A must be positive definite.", .call = FALSE)
+  if (any(eig$values < 0)) {
+    stop("The object `x` is not positive definite.", .call = FALSE)
   }
-  ee$vectors %*% diag(sqrt(ee$values)) %*% t(ee$vectors)
+  eig$vectors %*% diag(sqrt(eig$values)) %*% t(eig$vectors)
 
 }
 

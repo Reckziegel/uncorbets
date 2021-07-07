@@ -1,13 +1,17 @@
 #' Effective Number of Bets
 #'
 #' Computes the diversification probability distribution and the effective number
-#' of bets an allocation.
+#' of bets in an allocation.
 #'
-#' @param b A vector of exposures.
+#' @param b A vector of exposures (allocations).
 #' @param sigma A \code{n x n} covariance matrix.
 #' @param t A \code{n x n} torsion matrix.
 #'
-#' @return A \code{list} with the effective number of bets - enb - and the diversification probability distribution - p.
+#' @return A \code{list} of length 2 with:
+#'     \itemize{
+#'       \item \code{p}: the diversification probability distribution;
+#'       \item \code{enb}: the effective number of bets.
+#'     }
 #'
 #' @details Transcripted from the MATLAB code in \url{https://la.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors?s_tid=prof_contriblnk}.
 #'
@@ -33,16 +37,16 @@
 effective_bets <- function(b, sigma, t) {
 
   if (NCOL(b) > 1) {
-    stop("b must be univariate.", call. = FALSE)
+    stop("`b` must be univariate.", call. = FALSE)
   }
   if (!is_quadratic(sigma)) {
-    stop("Sigma matrix must be quadratic", call. = FALSE)
+    stop("`sigma` matrix must be quadratic.", call. = FALSE)
   }
 
   p <- solve(t(t), b) * (t %*% sigma %*% b) / as.numeric((t(b) %*% sigma %*% b))
   enb <- exp(-sum(p * log(1 + (p - 1) * (p > 1e-5))))
 
-  out <- list(allocation = p, enb = enb)
+  out <- list(p = p, enb = enb)
   out
 
 }
