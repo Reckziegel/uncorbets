@@ -47,6 +47,9 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -72,16 +75,49 @@
 <a href="#uncorbets" class="anchor"></a>uncorbets</h1></div>
 <!-- badges: start -->
 
-<blockquote>
-<p>The Effective Number of Bets precisely quantify the diversification level, summarizing in one number the fine structure of diversification.</p>
-</blockquote>
+<p>The Euler theorem has been widely used in finance as a way to decompose homogeneous risk measures of degree one. Unfortunately, this decomposition is spurious because all shocks are considered at once, instead of been treated as independent sources of risk.</p>
+<p>To quantify the true level of diversification Minimum Torsion Bets (MTB) generalizes risk-parity approaches by summarizing in one number the the fine structure of diversification.</p>
+<div id="toy-example" class="section level2">
+<h2 class="hasAnchor">
+<a href="#toy-example" class="anchor"></a>Toy Example</h2>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Reckziegel/uncorbets">uncorbets</a></span><span class="op">)</span>
+
+<span class="co"># prepare data</span>
+<span class="va">returns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">EuStockMarkets</span><span class="op">)</span><span class="op">)</span>
+<span class="va">covariance</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov</a></span><span class="op">(</span><span class="va">returns</span><span class="op">)</span>
+<span class="co"># Minimum Torsion Matrix</span>
+<span class="va">torsion_mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/torsion.html">torsion</a></span><span class="op">(</span><span class="va">covariance</span><span class="op">)</span>
+<span class="co"># Prior Allocation (equal weights, for example)</span>
+<span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">returns</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">returns</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># Compute allocation and diversification level</span>
+<span class="fu"><a href="reference/effective_bets.html">effective_bets</a></span><span class="op">(</span>b <span class="op">=</span> <span class="va">w</span>, sigma <span class="op">=</span> <span class="va">covariance</span>, t <span class="op">=</span> <span class="va">torsion_mat</span><span class="op">)</span>
+<span class="co">#&gt; $p</span>
+<span class="co">#&gt;           [,1]</span>
+<span class="co">#&gt; DAX  0.2673005</span>
+<span class="co">#&gt; SMI  0.2404370</span>
+<span class="co">#&gt; CAC  0.2776369</span>
+<span class="co">#&gt; FTSE 0.2146256</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $enb</span>
+<span class="co">#&gt; [1] 3.980549</span></code></pre></div>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the development version of <code>uncorbets</code> from github with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Reckziegel/uncorbets"</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="references" class="section level2">
+<h2 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h2>
+<ul>
+<li><p>Meucci, Attilio and Santangelo, Alberto and Deguest, Romain, Risk Budgeting and Diversification Based on Optimized Uncorrelated Factors (November 10, 2015). Available at SSRN: <a href="https://www.ssrn.com/abstract=2276632" class="uri">https://www.ssrn.com/abstract=2276632</a> or <a href="http://dx.doi.org/10.2139/ssrn.2276632" class="uri">http://dx.doi.org/10.2139/ssrn.2276632</a></p></li>
+<li><p>Attilio Meucci (2021). Portfolio Diversication Based on Optimized Uncorrelated Factors (<a href="https://www.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors" class="uri">https://www.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors</a>), MATLAB Central File Exchange. Retrieved July 8, 2021.</p></li>
+</ul>
 </div>
 </div>
   </div>
