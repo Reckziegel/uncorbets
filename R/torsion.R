@@ -1,18 +1,14 @@
 #' Computes the Minimum Torsion Matrix
 #'
-#' This function computes the Principal Components Torsion and the Minimum Torsion
+#' Computes the Principal Components Torsion and the Minimum Torsion
 #' for diversification analysis.
 #'
-#' @param Sigma A \code{n x n} covariance matrix.
-#' @param model One of: 'pca' or 'minimum-torsion'.
-#' @param method One of: 'approximate' or 'exact'. Only used when \code{model = 'minimum-torsion'}.
+#' @param sigma A \code{n x n} covariance matrix.
+#' @param model One of: "pca" or "minimum-torsion".
+#' @param method One of: "approximate" or "exact". Only used when \code{model = 'minimum-torsion'}.
 #' @param max_niter An \code{integer} with the maximum number of iterations.
 #'
 #' @return A \code{n x n} torsion matrix.
-#'
-#' @details Transcribed from the MATLAB code in \url{https://la.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors?s_tid=prof_contriblnk}.
-#'
-#' @seealso A. Meucci, A. Santangelo, R. Deguest - "Measuring Portfolio Diversification Based on Optimized Uncorrelated Factors" (2013)
 #'
 #' @export
 #'
@@ -24,8 +20,8 @@
 #' sigma <- stats::cov(log_ret)
 #'
 #' # torsion
-#' torsion(Sigma = sigma, model = 'minimum-torsion', method ='exact')
-torsion <- function(Sigma, model = "minimum-torsion", method = "exact", max_niter = 10000L) {
+#' torsion(sigma = sigma, model = 'minimum-torsion', method ='exact')
+torsion <- function(sigma, model = "minimum-torsion", method = "exact", max_niter = 10000L) {
 
   if (!(model %in% c('pca', 'minimum-torsion'))) {
     stop("Model must one of: 'pca' or 'minimum-torsion'", call. = FALSE)
@@ -46,7 +42,7 @@ torsion <- function(Sigma, model = "minimum-torsion", method = "exact", max_nite
   if (model == "pca") {
 
     ## PCA Decomposition
-    spectral_decomposition <- eigen(Sigma)
+    spectral_decomposition <- eigen(sigma)
     e      <- spectral_decomposition$vectors
     lambda <- spectral_decomposition$values
 
@@ -61,20 +57,20 @@ torsion <- function(Sigma, model = "minimum-torsion", method = "exact", max_nite
   } else if (model == 'minimum-torsion') {
 
     ## alt
-    C <- stats::cov2cor(Sigma)
+    C <- stats::cov2cor(sigma)
 
     ## Correlation matrix
-    sigma <- diag(Sigma) ^ (1 / 2)
-    C <- diag(1 / sigma) %*% Sigma %*% diag(1 / sigma)
+    .sigma <- diag(sigma) ^ (1 / 2)
+    C <- diag(1 / .sigma) %*% sigma %*% diag(1 / .sigma)
     c <- sqrtm(C) ## Riccati root of C
 
     if (method == 'approximate') {
 
-      t <- (diag(sigma) %*% solve(c)) %*% diag(1 / sigma)
+      t <- (diag(.sigma) %*% solve(c)) %*% diag(1 / .sigma)
 
     } else if (method == 'exact') {
 
-      n_ <- ncol(Sigma)
+      n_ <- ncol(sigma)
 
       ## initialize
       d <- rep(1, n_)
@@ -103,15 +99,15 @@ torsion <- function(Sigma, model = "minimum-torsion", method = "exact", max_nite
       }
 
       x <- pi_ %*% solve(c)
-      t <- diag(sigma) %*% x %*% diag(1 / sigma)
+      t <- diag(.sigma) %*% x %*% diag(1 / .sigma)
 
     }
 
   }
 
-  if (is_col_named(Sigma)) {
-    colnames(t) <- colnames(Sigma)
-    rownames(t) <- colnames(Sigma)
+  if (is_col_named(sigma)) {
+    colnames(t) <- colnames(sigma)
+    rownames(t) <- colnames(sigma)
   }
 
   t

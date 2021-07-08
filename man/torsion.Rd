@@ -4,14 +4,14 @@
 \alias{torsion}
 \title{Computes the Minimum Torsion Matrix}
 \usage{
-torsion(Sigma, model = "minimum-torsion", method = "exact", max_niter = 10000L)
+torsion(sigma, model = "minimum-torsion", method = "exact", max_niter = 10000L)
 }
 \arguments{
-\item{Sigma}{A \code{n x n} covariance matrix.}
+\item{sigma}{A \code{n x n} covariance matrix.}
 
-\item{model}{One of: 'pca' or 'minimum-torsion'.}
+\item{model}{One of: "pca" or "minimum-torsion".}
 
-\item{method}{One of: 'approximate' or 'exact'. Only used when \code{model = 'minimum-torsion'}.}
+\item{method}{One of: "approximate" or "exact". Only used when \code{model = 'minimum-torsion'}.}
 
 \item{max_niter}{An \code{integer} with the maximum number of iterations.}
 }
@@ -19,11 +19,8 @@ torsion(Sigma, model = "minimum-torsion", method = "exact", max_niter = 10000L)
 A \code{n x n} torsion matrix.
 }
 \description{
-This function computes the Principal Components Torsion and the Minimum Torsion
+Computes the Principal Components Torsion and the Minimum Torsion
 for diversification analysis.
-}
-\details{
-Transcribed from the MATLAB code in \url{https://la.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors?s_tid=prof_contriblnk}.
 }
 \examples{
 # extract the invariants from the data
@@ -33,8 +30,5 @@ log_ret <- diff(log(EuStockMarkets))
 sigma <- stats::cov(log_ret)
 
 # torsion
-torsion(Sigma = sigma, model = 'minimum-torsion', method ='exact')
-}
-\seealso{
-A. Meucci, A. Santangelo, R. Deguest - "Measuring Portfolio Diversification Based on Optimized Uncorrelated Factors" (2013)
+torsion(sigma = sigma, model = 'minimum-torsion', method ='exact')
 }

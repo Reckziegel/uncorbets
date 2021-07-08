@@ -3,7 +3,7 @@ ret <- diff(log(EuStockMarkets))
 # calculate the covariance matrix
 sigma <- stats::cov(ret)
 # torsion
-tmat <- torsion(Sigma = sigma, model = 'minimum-torsion', method = 'exact')
+tmat <- torsion(sigma = sigma, model = 'minimum-torsion', method = 'exact')
 #' # 1/N reference
 prior_allocation <- rep(1 / ncol(ret), ncol(ret))
 

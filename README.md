@@ -14,9 +14,40 @@ coverage](https://codecov.io/gh/Reckziegel/uncorbets/branch/main/graph/badge.svg
 status](https://travis-ci.com/Reckziegel/uncorbets.svg?branch=main)](https://travis-ci.com/Reckziegel/uncorbets)
 <!-- badges: end -->
 
-> The Effective Number of Bets precisely quantify the diversification
-> level, summarizing in one number the fine structure of
-> diversification.
+The Euler theorem has been widely used in finance as a way to decompose
+homogeneous risk measures of degree one. Unfortunately, this
+decomposition is spurious because all shocks are considered at once,
+instead of been treated as independent sources of risk.
+
+To quantify the true level of diversification Minimum Torsion Bets (MTB)
+generalizes risk-parity approaches by summarizing in one number the the
+fine structure of diversification.
+
+## Toy Example
+
+``` r
+library(uncorbets)
+
+# prepare data
+returns <- diff(log(EuStockMarkets))
+covariance <- cov(returns)
+# Minimum Torsion Matrix
+torsion_mat <- torsion(covariance)
+# Prior Allocation (equal weights, for example)
+w <- rep(1 / ncol(returns), ncol(returns))
+
+# Compute allocation and diversification level
+effective_bets(b = w, sigma = covariance, t = torsion_mat)
+#> $p
+#>           [,1]
+#> DAX  0.2673005
+#> SMI  0.2404370
+#> CAC  0.2776369
+#> FTSE 0.2146256
+#> 
+#> $enb
+#> [1] 3.980549
+```
 
 ## Installation
 
@@ -26,3 +57,16 @@ You can install the development version of `uncorbets` from github with:
 # install.packages("devtools")
 devtools::install_github("Reckziegel/uncorbets")
 ```
+
+## References
+
+-   Meucci, Attilio and Santangelo, Alberto and Deguest, Romain, Risk
+    Budgeting and Diversification Based on Optimized Uncorrelated
+    Factors (November 10, 2015). Available at SSRN:
+    <https://www.ssrn.com/abstract=2276632> or
+    <http://dx.doi.org/10.2139/ssrn.2276632>
+
+-   Attilio Meucci (2021). Portfolio Diversication Based on Optimized
+    Uncorrelated Factors
+    (<https://www.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors>),
+    MATLAB Central File Exchange. Retrieved July 8, 2021.

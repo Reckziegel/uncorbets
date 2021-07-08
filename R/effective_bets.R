@@ -1,7 +1,7 @@
 #' Effective Number of Bets
 #'
 #' Computes the diversification probability distribution and the effective number
-#' of bets in an allocation.
+#' of bets of an allocation.
 #'
 #' @param b A vector of exposures (allocations).
 #' @param sigma A \code{n x n} covariance matrix.
@@ -13,10 +13,6 @@
 #'       \item \code{enb}: the effective number of bets.
 #'     }
 #'
-#' @details Transcripted from the MATLAB code in \url{https://la.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors?s_tid=prof_contriblnk}.
-#'
-#' @seealso A. Meucci, A. Santangelo, R. Deguest - "Measuring Portfolio Diversification Based on Optimized Uncorrelated Factors" (2013)
-#'
 #' @export
 #'
 #' @examples
@@ -27,7 +23,7 @@
 #' sigma <- stats::cov(log_ret)
 #'
 #' # torsion
-#' torsion_cov <- torsion(Sigma = sigma, model = 'minimum-torsion', method ='exact')
+#' torsion_cov <- torsion(sigma = sigma, model = 'minimum-torsion', method ='exact')
 #'
 #' # 1/N reference
 #' b <- rep(1 / ncol(log_ret), ncol(log_ret))

@@ -1,9 +1,9 @@
 ret <- diff(log(EuStockMarkets))
 sig <- cov(ret)
 
-torsion_pca <- torsion(Sigma = sig, model = "pca")
-torsion_mt_approx <- torsion(Sigma = sig, model = "minimum-torsion", method = "approximate")
-torsion_mt_exact <- torsion(Sigma = sig, model = "minimum-torsion", method = "exact")
+torsion_pca <- torsion(sigma = sig, model = "pca")
+torsion_mt_approx <- torsion(sigma = sig, model = "minimum-torsion", method = "approximate")
+torsion_mt_exact <- torsion(sigma = sig, model = "minimum-torsion", method = "exact")
 
 test_that("torsion works on pca", {
   expect_type(torsion_pca, "double")

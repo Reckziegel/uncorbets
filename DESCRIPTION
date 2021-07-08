@@ -3,10 +3,11 @@ Package: uncorbets
 Title: Uncorrelated Bets via Minimum Torsion Algorithm
 Version: 0.0.9000
 Authors@R: 
-    person(given = "Bernardo",
-           family = "Reckziegel",
-           role = c("aut", "cre", "cph"),
-           email = "bernardo_cse@hotmail.com")
+    c(person(given  = "Bernardo",
+             family = "Reckziegel",
+             role   = c("aut", "cre", "cph"),
+             email  = "bernardo_cse@hotmail.com")
+    )
 Description: Implements Minimum Torsion for portfolio diversification as
     described in Meucci, Attilio (2013) <doi:10.2139/ssrn.2276632>.
 License: MIT + file LICENSE

@@ -22,10 +22,7 @@ A \code{list} of length 2 with:
 }
 \description{
 Computes the diversification probability distribution and the effective number
-of bets in an allocation.
-}
-\details{
-Transcripted from the MATLAB code in \url{https://la.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors?s_tid=prof_contriblnk}.
+of bets of an allocation.
 }
 \examples{
 # extract the invariants from the data
@@ -35,14 +32,11 @@ log_ret <- diff(log(EuStockMarkets))
 sigma <- stats::cov(log_ret)
 
 # torsion
-torsion_cov <- torsion(Sigma = sigma, model = 'minimum-torsion', method ='exact')
+torsion_cov <- torsion(sigma = sigma, model = 'minimum-torsion', method ='exact')
 
 # 1/N reference
 b <- rep(1 / ncol(log_ret), ncol(log_ret))
 
 # ENB
 effective_bets(b = b, sigma = sigma, t = torsion_cov)
-}
-\seealso{
-A. Meucci, A. Santangelo, R. Deguest - "Measuring Portfolio Diversification Based on Optimized Uncorrelated Factors" (2013)
 }
