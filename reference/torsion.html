@@ -137,7 +137,7 @@ for diversification analysis.</p>
     </tr>
     <tr>
       <th>method</th>
-      <td><p>One of: "approximate" or "exact". Only used when <code>model = 'minimum-torsion'</code>.</p></td>
+      <td><p>One of: "approximate" or "exact". Only used when <code>model = "minimum-torsion"</code>.</p></td>
     </tr>
     <tr>
       <th>max_niter</th>
@@ -151,18 +151,19 @@ for diversification analysis.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># extract the invariants from the data</span>
-<span class='va'>log_ret</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/diff.html'>diff</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>EuStockMarkets</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
+<span class='va'>log_ret</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>400</span><span class='op'>)</span>, ncol <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>10</span>
 
 <span class='co'># calculate the covariance matrix</span>
 <span class='va'>sigma</span> <span class='op'>&lt;-</span> <span class='fu'>stats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cov</a></span><span class='op'>(</span><span class='va'>log_ret</span><span class='op'>)</span>
 
 <span class='co'># torsion</span>
 <span class='fu'>torsion</span><span class='op'>(</span>sigma <span class='op'>=</span> <span class='va'>sigma</span>, model <span class='op'>=</span> <span class='st'>'minimum-torsion'</span>, method <span class='op'>=</span><span class='st'>'exact'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;             DAX        SMI        CAC       FTSE
-#&gt; DAX   1.3306522 -0.3706300 -0.3395714 -0.2629190
-#&gt; SMI  -0.2988898  1.2208880 -0.1380071 -0.2084528
-#&gt; CAC  -0.3894318 -0.1962598  1.2755472 -0.3566925
-#&gt; FTSE -0.1569205 -0.1542748 -0.1856314  1.1963296</div></pre>
+</div><div class='output co'>#&gt;            [,1]        [,2]        [,3]        [,4]
+#&gt; [1,] 1.00534916  0.02148323  0.06301570  0.02088640
+#&gt; [2,] 0.02410872  1.00122793 -0.01410694 -0.02018601
+#&gt; [3,] 0.06823684 -0.01361221  1.00506025  0.02313965
+#&gt; [4,] 0.02704863 -0.02329473  0.02767377  1.00160337</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
