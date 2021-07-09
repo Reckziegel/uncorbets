@@ -19,9 +19,16 @@ homogeneous risk measures of degree one. Unfortunately, this
 decomposition is spurious because all shocks are considered at once,
 instead of been treated as independent sources of risk.
 
-To quantify the true level of diversification Minimum Torsion Bets (MTB)
-generalizes risk-parity approaches by summarizing in one number the the
-fine structure of diversification.
+The Minimum Torsion Bets (MTB) offers a solution to this problem: it
+uses the spectral decomposition to “pick” the uncorrelated factors that
+are as close as possible to the original ones, among all the possible
+rotations that live in the N-th dimensional space.
+
+The output is a diversification distribution that it’s always positive,
+sum to 1, capture the true sources risk and have a meaningful
+interpretation. The above properties classify the Effective Number of
+Minimum Torsion Bets a generalization of Marginal Contribution to Risk
+(MCR).
 
 ## Toy Example
 
@@ -66,7 +73,7 @@ devtools::install_github("Reckziegel/uncorbets")
     <https://www.ssrn.com/abstract=2276632> or
     <http://dx.doi.org/10.2139/ssrn.2276632>
 
--   Attilio Meucci (2021). Portfolio Diversication Based on Optimized
+-   Attilio Meucci (2021). Portfolio Diversification Based on Optimized
     Uncorrelated Factors
     (<https://www.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors>),
     MATLAB Central File Exchange. Retrieved July 8, 2021.

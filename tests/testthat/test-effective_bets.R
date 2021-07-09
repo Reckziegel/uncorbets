@@ -1,5 +1,6 @@
 # extract the invariants from the data
-ret <- diff(log(EuStockMarkets))
+set.seed(123)
+ret <- matrix(stats::rnorm(400), ncol = 4)
 # calculate the covariance matrix
 sigma <- stats::cov(ret)
 # torsion
@@ -26,3 +27,4 @@ test_that("effective_bets()", {
   expect_true(enb[[2]] > 0 & enb[[2]] < ncol(ret))
 
 })
+

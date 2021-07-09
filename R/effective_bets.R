@@ -17,7 +17,8 @@
 #'
 #' @examples
 #' # extract the invariants from the data
-#' log_ret <- diff(log(EuStockMarkets))
+#' set.seed(123)
+#' log_ret <- matrix(rnorm(400), ncol = 4) / 10
 #'
 #' # compute the covariance matrix
 #' sigma <- stats::cov(log_ret)

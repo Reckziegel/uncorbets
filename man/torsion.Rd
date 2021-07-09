@@ -11,7 +11,7 @@ torsion(sigma, model = "minimum-torsion", method = "exact", max_niter = 10000L)
 
 \item{model}{One of: "pca" or "minimum-torsion".}
 
-\item{method}{One of: "approximate" or "exact". Only used when \code{model = 'minimum-torsion'}.}
+\item{method}{One of: "approximate" or "exact". Only used when \code{model = "minimum-torsion"}.}
 
 \item{max_niter}{An \code{integer} with the maximum number of iterations.}
 }
@@ -24,7 +24,8 @@ for diversification analysis.
 }
 \examples{
 # extract the invariants from the data
-log_ret <- diff(log(EuStockMarkets))
+set.seed(123)
+log_ret <- matrix(rnorm(400), ncol = 4) / 10
 
 # calculate the covariance matrix
 sigma <- stats::cov(log_ret)

@@ -1,5 +1,6 @@
 # data
-ret <- diff(log(EuStockMarkets))
+set.seed(123)
+ret <- matrix(stats::rnorm(400), ncol = 4)
 ret_cov <- stats::cov(ret)
 ds <- eigen(ret_cov)
 

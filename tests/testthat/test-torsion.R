@@ -1,4 +1,5 @@
-ret <- diff(log(EuStockMarkets))
+set.seed(123)
+ret <- matrix(stats::rnorm(400), ncol = 4)
 sig <- cov(ret)
 
 torsion_pca <- torsion(sigma = sig, model = "pca")

@@ -5,7 +5,7 @@
 #'
 #' @param sigma A \code{n x n} covariance matrix.
 #' @param model One of: "pca" or "minimum-torsion".
-#' @param method One of: "approximate" or "exact". Only used when \code{model = 'minimum-torsion'}.
+#' @param method One of: "approximate" or "exact". Only used when \code{model = "minimum-torsion"}.
 #' @param max_niter An \code{integer} with the maximum number of iterations.
 #'
 #' @return A \code{n x n} torsion matrix.
@@ -14,7 +14,8 @@
 #'
 #' @examples
 #' # extract the invariants from the data
-#' log_ret <- diff(log(EuStockMarkets))
+#' set.seed(123)
+#' log_ret <- matrix(rnorm(400), ncol = 4) / 10
 #'
 #' # calculate the covariance matrix
 #' sigma <- stats::cov(log_ret)

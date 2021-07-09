@@ -4,21 +4,17 @@
 #'
 #' @param A A square matrix.
 #'
-#' @return A \code{matrix}.
+#' @return A squared \code{matrix}.
 #'
 #' @keywords internal
 sqrtm <- function(x) {
-
   if (!is_quadratic(x))
     stop("The object `x` is not quadratic.", .call = FALSE)
-
-  eig<- eigen(x)
-
+  eig <- eigen(x)
   if (any(eig$values < 0)) {
     stop("The object `x` is not positive definite.", .call = FALSE)
   }
   eig$vectors %*% diag(sqrt(eig$values)) %*% t(eig$vectors)
-
 }
 
 #' Test if an object is quadratic

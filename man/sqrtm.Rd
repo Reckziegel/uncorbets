@@ -10,7 +10,7 @@ sqrtm(x)
 \item{A}{A square matrix.}
 }
 \value{
-A \code{matrix}.
+A squared \code{matrix}.
 }
 \description{
 This function returns the square root of a quadratic matrix.
