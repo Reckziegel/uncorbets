@@ -61,7 +61,7 @@ effective_bets(b = w, sigma = covariance, t = torsion_mat)
 Install the released version from CRAN with:
 
 ``` r
-install.packages("uncorbets)
+install.packages("uncorbets")
 ```
 
 Install the development version of `uncorbets` from github with:
