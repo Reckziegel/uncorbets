@@ -14,6 +14,7 @@ License: MIT + file LICENSE
 URL: https://github.com/Reckziegel/uncorbets
 BugReports: https://github.com/Reckziegel/uncorbets/issues
 Imports: 
+    NlcOptim (>= 0.6),
     stats
 Suggests: 
     spelling,
