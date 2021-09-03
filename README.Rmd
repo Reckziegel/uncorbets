@@ -22,11 +22,11 @@ knitr::opts_chunk$set(
 [![Travis build status](https://travis-ci.com/Reckziegel/uncorbets.svg?branch=main)](https://travis-ci.com/Reckziegel/uncorbets)
 <!-- badges: end -->
 
-The Euler theorem has been widely used in finance as a way to decompose homogeneous risk measures of degree one. Unfortunately, this decomposition is spurious because all shocks are considered at once, instead of been treated as independent sources of risk.
+The Euler theorem has been widely used in finance as a way to decompose homogeneous risk measures of degree one. Unfortunately, this decomposition does not isolate the true sources of risk.
 
-The Minimum Torsion Bets (MTB) offers a solution to this problem: it uses the spectral decomposition to "pick" the uncorrelated factors that are as close as possible to the original ones, among all the possible rotations that live in the N-th dimensional space. 
+The Minimum Torsion Bets (MTB) offers a solution to this problem: it uses the spectral decomposition to "pick" the uncorrelated factors that are as close as possible to the original variables, among all living matrix rotations.
 
-The output is a diversification distribution that it's always positive, sum to $1$, capture the true sources risk and have a meaningful interpretation. The above properties classify the Effective Number of Minimum Torsion Bets a generalization of Marginal Contribution to Risk (MCR). 
+The output of this transformation is a diversification distribution: it's always positive, sums to $1$, capture the true sources risk and have an insightful interpretation. The above properties classify the Effective Number of Minimum Torsion Bets a generalization of the Marginal Contribution to Risk (MCR). 
 
 ## Toy Example 
 
@@ -43,6 +43,9 @@ w <- rep(1 / ncol(returns), ncol(returns))
 
 # Compute allocation and diversification level
 effective_bets(b = w, sigma = covariance, t = torsion_mat)
+
+# maximize the effective number of bets (enb)
+max_effective_bets(x0 = w, sigma = covariance, t = torsion_mat)
 ```
 
 ## Installation
