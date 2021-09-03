@@ -16,19 +16,18 @@ status](https://travis-ci.com/Reckziegel/uncorbets.svg?branch=main)](https://tra
 
 The Euler theorem has been widely used in finance as a way to decompose
 homogeneous risk measures of degree one. Unfortunately, this
-decomposition is spurious because all shocks are considered at once,
-instead of been treated as independent sources of risk.
+decomposition does not isolate the true sources of risk.
 
 The Minimum Torsion Bets (MTB) offers a solution to this problem: it
 uses the spectral decomposition to “pick” the uncorrelated factors that
-are as close as possible to the original ones, among all the possible
-rotations that live in the N-th dimensional space.
+are as close as possible to the original variables, among all living
+matrix rotations.
 
-The output is a diversification distribution that it’s always positive,
-sum to 1, capture the true sources risk and have a meaningful
-interpretation. The above properties classify the Effective Number of
-Minimum Torsion Bets a generalization of Marginal Contribution to Risk
-(MCR).
+The output of this transformation is a diversification distribution:
+it’s always positive, sums to 1, capture the true sources risk and have
+an insightful interpretation. The above properties classify the
+Effective Number of Minimum Torsion Bets a generalization of the
+Marginal Contribution to Risk (MCR).
 
 ## Toy Example
 
@@ -54,6 +53,49 @@ effective_bets(b = w, sigma = covariance, t = torsion_mat)
 #> 
 #> $enb
 #> [1] 3.980549
+
+# maximize the effective number of bets (enb)
+max_effective_bets(x0 = w, sigma = covariance, t = torsion_mat)
+#> $weights
+#> [1] 0.2227163 0.2603372 0.2114589 0.3054876
+#> 
+#> $enb
+#> [1] 4
+#> 
+#> $counts
+#>      nfval ngval
+#> [1,]    47     9
+#> 
+#> $lambda_lb
+#>      [,1]
+#> DAX     0
+#> SMI     0
+#> CAC     0
+#> FTSE    0
+#> 
+#> $lambda_ub
+#>      [,1]
+#> DAX     0
+#> SMI     0
+#> CAC     0
+#> FTSE    0
+#> 
+#> $lambda_eq
+#> [1] 1.162481e-06
+#> 
+#> $gradient
+#>               [,1]
+#> DAX   1.966953e-06
+#> SMI  -4.768372e-06
+#> CAC   8.940697e-06
+#> FTSE -3.337860e-06
+#> 
+#> $hessian
+#>             DAX        SMI        CAC       FTSE
+#> DAX   5.3149468 -1.4603802 -1.4893686 -0.5169268
+#> SMI  -1.4603802  5.2212615 -3.6528175 -0.9075766
+#> CAC  -1.4893686 -3.6528175  6.3451210 -0.5218244
+#> FTSE -0.5169268 -0.9075766 -0.5218244  7.6046588
 ```
 
 ## Installation

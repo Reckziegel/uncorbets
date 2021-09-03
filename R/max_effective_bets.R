@@ -1,12 +1,9 @@
-#' Risk-Parity powered by the Minimum Torsion Algorithm
+#' Risk-Diversification powered by the Minimum Torsion Algorithm
 #'
-#' This function finds the allocation that maximizes \code{\link{effective_bets}}.
-#' It wraps \code{\link[NlcOptim]{solnl}}, a general nonlinear optimizer
-#' that uses Sequential Quadratic Programming (SQP) with equality and inequality
-#' constraints.
+#' Finds the allocation that maximizes the \code{\link{effective_bets}}.
 #'
-#' @param x0 A \code{numeric} vector for the search starting point. It can be thought
-#' as a prior allocation.
+#' @param x0 A \code{numeric} vector for the search starting point. Usually the
+#' "one over n" allocation.
 #' @param sigma A \code{n x n} covariance matrix.
 #' @param t A \code{n x n} torsion matrix.
 #' @param tol An \code{interger} with the convergence tolerance.
@@ -18,7 +15,7 @@
 #'     \itemize{
 #'       \item \code{weights}: the optimal allocation policy
 #'       \item \code{enb}: the optimal effective number of bets
-#'       \item \code{counts}: The number of iterations of the objective and the gradient
+#'       \item \code{counts}: the number of iterations of the objective and the gradient
 #'       \item \code{lambda_lb}: the lower bound Lagrange multipliers
 #'       \item \code{lambda_ub}: the upper bound Lagrange multipliers
 #'       \item \code{lambda_eq}: the equality Lagrange multipliers
@@ -27,6 +24,8 @@
 #'     }
 #'
 #' @export
+#'
+#' @seealso \code{\link[NlcOptim]{solnl}}
 #'
 #' @examples
 #' # extract the invariants from the data
@@ -43,9 +42,22 @@
 #' b <- rep(1 / ncol(log_ret), ncol(log_ret))
 #'
 #' max_effective_bets(x0 = b, sigma = sigma, t = torsion_cov)
-max_effective_bets <- function(x0, sigma, t, tol = 1e-20, maxeval = 5000L, maxiter = 5000L) {
+max_effective_bets <- function(x0,
+                               sigma,
+                               t,
+                               tol     = 1e-20,
+                               maxeval = 5000L,
+                               maxiter = 5000L) {
 
-  size <- length(as.vector(x0))
+  assertthat::assert_that(assertthat::is.number(tol))
+  assertthat::assert_that(assertthat::is.number(maxeval))
+  assertthat::assert_that(assertthat::is.number(maxiter))
+  assertthat::assert_that(NCOL(sigma) == NCOL(t))
+
+  size <- NCOL(sigma)
+  if (is.null(x0)) {
+    x0 <- rep(1 / size, size)
+  }
 
   objective <- function(x0, sigma, t) {
     -effective_bets(b = x0, sigma = sigma, t = t)$enb
@@ -65,7 +77,7 @@ max_effective_bets <- function(x0, sigma, t, tol = 1e-20, maxeval = 5000L, maxit
     maxnFun = maxeval
   )
 
-  list(
+  out <- list(
     weights   = as.vector(opt$par),
     enb       = -opt$fn,
     counts    = opt$counts,
@@ -75,6 +87,17 @@ max_effective_bets <- function(x0, sigma, t, tol = 1e-20, maxeval = 5000L, maxit
     gradient  = opt$grad,
     hessian   = opt$hessian
   )
+
+  if (is_col_named(sigma)) {
+    nms <- colnames(sigma)
+    rownames(out$lambda_lb) <- nms
+    rownames(out$lambda_ub) <- nms
+    rownames(out$gradient)  <- nms
+    rownames(out$hessian)   <- nms
+    colnames(out$hessian)   <- nms
+  }
+
+  out
 
 }
 
