@@ -36,12 +36,14 @@ library(uncorbets)
 # prepare data
 returns <- diff(log(EuStockMarkets))
 covariance <- cov(returns)
+
 # Minimum Torsion Matrix
 torsion_mat <- torsion(covariance)
+
 # Prior Allocation (equal weights, for example)
 w <- rep(1 / ncol(returns), ncol(returns))
 
-# Compute allocation and diversification level
+# Compute diversification distribution and the diversification level
 effective_bets(b = w, sigma = covariance, t = torsion_mat)
 #> $p
 #>           [,1]
