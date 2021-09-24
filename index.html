@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">uncorbets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -75,12 +75,13 @@
 <a href="#uncorbets" class="anchor"></a>uncorbets</h1></div>
 <!-- badges: start -->
 
+<!-- badges: end -->
 <p>The Euler theorem has been widely used in finance as a way to decompose homogeneous risk measures of degree one. Unfortunately, this decomposition does not isolate the true sources of risk.</p>
 <p>The Minimum Torsion Bets (MTB) offers a solution to this problem: it uses the spectral decomposition to “pick” the uncorrelated factors that are as close as possible to the original variables, among all living matrix rotations.</p>
-<p>The output of this transformation is a diversification distribution: it’s always positive, sums to 1, capture the true sources risk and have an insightful interpretation. The above properties classify the Effective Number of Minimum Torsion Bets a generalization of the Marginal Contribution to Risk (MCR).</p>
-<div id="toy-example" class="section level2">
+<p>The output is a diversification distribution with the following properties: it’s always positive, sums to 1, capture the true sources risk and have an insightful interpretation. The above characteristics put the Effective Number of Minimum Torsion Bets as a generalization of the Marginal Contribution to Risk (MCR).</p>
+<div id="example" class="section level2">
 <h2 class="hasAnchor">
-<a href="#toy-example" class="anchor"></a>Toy Example</h2>
+<a href="#example" class="anchor"></a>Example</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Reckziegel/uncorbets">uncorbets</a></span><span class="op">)</span>
 
@@ -103,7 +104,6 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $enb</span>
 <span class="co">#&gt; [1] 3.980549</span>
-
 <span class="co"># maximize the effective number of bets (enb)</span>
 <span class="fu"><a href="reference/max_effective_bets.html">max_effective_bets</a></span><span class="op">(</span>x0 <span class="op">=</span> <span class="va">w</span>, sigma <span class="op">=</span> <span class="va">covariance</span>, t <span class="op">=</span> <span class="va">torsion_mat</span><span class="op">)</span>
 <span class="co">#&gt; $weights</span>
@@ -207,7 +207,6 @@
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
 <li><a href="https://codecov.io/gh/Reckziegel/uncorbets?branch=main"><img src="https://codecov.io/gh/Reckziegel/uncorbets/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://github.com/Reckziegel/uncorbets/actions"><img src="https://github.com/Reckziegel/uncorbets/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://travis-ci.com/Reckziegel/uncorbets"><img src="https://travis-ci.com/Reckziegel/uncorbets.svg?branch=main" alt="Travis build status"></a></li>
 </ul>
 </div>
 </div>
