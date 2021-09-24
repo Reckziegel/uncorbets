@@ -1,4 +1,6 @@
-# uncorbets (development version)
+# uncorbets 0.1.1
+
+* Added `max_effective_bets()` (#2) 
 
 # uncorbets 0.1.0
 

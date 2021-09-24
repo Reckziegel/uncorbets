@@ -10,8 +10,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![Codecov test
 coverage](https://codecov.io/gh/Reckziegel/uncorbets/branch/main/graph/badge.svg)](https://codecov.io/gh/Reckziegel/uncorbets?branch=main)
 [![R-CMD-check](https://github.com/Reckziegel/uncorbets/workflows/R-CMD-check/badge.svg)](https://github.com/Reckziegel/uncorbets/actions)
-[![Travis build
-status](https://travis-ci.com/Reckziegel/uncorbets.svg?branch=main)](https://travis-ci.com/Reckziegel/uncorbets)
+
 <!-- badges: end -->
 
 The Euler theorem has been widely used in finance as a way to decompose
@@ -23,13 +22,13 @@ uses the spectral decomposition to “pick” the uncorrelated factors that
 are as close as possible to the original variables, among all living
 matrix rotations.
 
-The output of this transformation is a diversification distribution:
-it’s always positive, sums to 1, capture the true sources risk and have
-an insightful interpretation. The above properties classify the
-Effective Number of Minimum Torsion Bets a generalization of the
-Marginal Contribution to Risk (MCR).
+The output is a diversification distribution with the following
+properties: it’s always positive, sums to 1, capture the true sources
+risk and have an insightful interpretation. The above characteristics
+put the Effective Number of Minimum Torsion Bets as a generalization of
+the Marginal Contribution to Risk (MCR).
 
-## Toy Example
+## Example
 
 ``` r
 library(uncorbets)
@@ -53,7 +52,6 @@ effective_bets(b = w, sigma = covariance, t = torsion_mat)
 #> 
 #> $enb
 #> [1] 3.980549
-
 # maximize the effective number of bets (enb)
 max_effective_bets(x0 = w, sigma = covariance, t = torsion_mat)
 #> $weights

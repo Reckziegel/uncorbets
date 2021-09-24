@@ -16,19 +16,18 @@ knitr::opts_chunk$set(
 # uncorbets
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![Codecov test coverage](https://codecov.io/gh/Reckziegel/uncorbets/branch/main/graph/badge.svg)](https://codecov.io/gh/Reckziegel/uncorbets?branch=main)
-[![R-CMD-check](https://github.com/Reckziegel/uncorbets/workflows/R-CMD-check/badge.svg)](https://github.com/Reckziegel/uncorbets/actions)
-[![Travis build status](https://travis-ci.com/Reckziegel/uncorbets.svg?branch=main)](https://travis-ci.com/Reckziegel/uncorbets)
+
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![Codecov test coverage](https://codecov.io/gh/Reckziegel/uncorbets/branch/main/graph/badge.svg)](https://codecov.io/gh/Reckziegel/uncorbets?branch=main) [![R-CMD-check](https://github.com/Reckziegel/uncorbets/workflows/R-CMD-check/badge.svg)](https://github.com/Reckziegel/uncorbets/actions)
+
 <!-- badges: end -->
 
 The Euler theorem has been widely used in finance as a way to decompose homogeneous risk measures of degree one. Unfortunately, this decomposition does not isolate the true sources of risk.
 
 The Minimum Torsion Bets (MTB) offers a solution to this problem: it uses the spectral decomposition to "pick" the uncorrelated factors that are as close as possible to the original variables, among all living matrix rotations.
 
-The output of this transformation is a diversification distribution: it's always positive, sums to $1$, capture the true sources risk and have an insightful interpretation. The above properties classify the Effective Number of Minimum Torsion Bets a generalization of the Marginal Contribution to Risk (MCR). 
+The output is a diversification distribution with the following properties: it's always positive, sums to $1$, capture the true sources risk and have an insightful interpretation. The above characteristics put the Effective Number of Minimum Torsion Bets as a generalization of the Marginal Contribution to Risk (MCR).
 
-## Toy Example 
+## Example
 
 ```{r}
 library(uncorbets)
@@ -65,6 +64,6 @@ devtools::install_github("Reckziegel/uncorbets")
 
 ## References
 
-- Meucci, Attilio and Santangelo, Alberto and Deguest, Romain, Risk Budgeting and Diversification Based on Optimized Uncorrelated Factors (November 10, 2015). Available at SSRN: https://www.ssrn.com/abstract=2276632 or http://dx.doi.org/10.2139/ssrn.2276632
+-   Meucci, Attilio and Santangelo, Alberto and Deguest, Romain, Risk Budgeting and Diversification Based on Optimized Uncorrelated Factors (November 10, 2015). Available at SSRN: <https://www.ssrn.com/abstract=2276632> or <http://dx.doi.org/10.2139/ssrn.2276632>
 
-- Attilio Meucci (2021). Portfolio Diversification Based on Optimized Uncorrelated Factors (https://www.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors), MATLAB Central File Exchange. Retrieved July 8, 2021.
+-   Attilio Meucci (2021). Portfolio Diversification Based on Optimized Uncorrelated Factors (<https://www.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors>), MATLAB Central File Exchange. Retrieved July 8, 2021.

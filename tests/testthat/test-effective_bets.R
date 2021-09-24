@@ -28,3 +28,14 @@ test_that("effective_bets()", {
 
 })
 
+test_that("effective_bets() error handling", {
+  # b` must be univariate.
+  expect_error(
+    effective_bets(cbind(prior_allocation, prior_allocation), sigma, tmat)
+  )
+  # `sigma` matrix must be quadratic
+  expect_error(
+    effective_bets(prior_allocation, sigma[1:4, 1:3], tmat)
+  )
+})
+
