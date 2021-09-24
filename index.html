@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">uncorbets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -88,12 +88,14 @@
 <span class="co"># prepare data</span>
 <span class="va">returns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">EuStockMarkets</span><span class="op">)</span><span class="op">)</span>
 <span class="va">covariance</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov</a></span><span class="op">(</span><span class="va">returns</span><span class="op">)</span>
+
 <span class="co"># Minimum Torsion Matrix</span>
 <span class="va">torsion_mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/torsion.html">torsion</a></span><span class="op">(</span><span class="va">covariance</span><span class="op">)</span>
+
 <span class="co"># Prior Allocation (equal weights, for example)</span>
 <span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">returns</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">returns</span><span class="op">)</span><span class="op">)</span>
 
-<span class="co"># Compute allocation and diversification level</span>
+<span class="co"># Compute diversification distribution and the diversification level</span>
 <span class="fu"><a href="reference/effective_bets.html">effective_bets</a></span><span class="op">(</span>b <span class="op">=</span> <span class="va">w</span>, sigma <span class="op">=</span> <span class="va">covariance</span>, t <span class="op">=</span> <span class="va">torsion_mat</span><span class="op">)</span>
 <span class="co">#&gt; $p</span>
 <span class="co">#&gt;           [,1]</span>
