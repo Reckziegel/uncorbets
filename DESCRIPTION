@@ -11,7 +11,7 @@ Authors@R:
 Description: Implements Minimum Torsion for portfolio diversification as
     described in Meucci, Attilio (2013) <doi:10.2139/ssrn.2276632>.
 License: MIT + file LICENSE
-URL: https://github.com/Reckziegel/uncorbets
+URL: https://github.com/Reckziegel/uncorbets, https://reckziegel.github.io/uncorbets/
 BugReports: https://github.com/Reckziegel/uncorbets/issues
 Imports: 
     assertthat (>= 0.2.1),

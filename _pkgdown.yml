@@ -1,3 +1,4 @@
+url: https://reckziegel.github.io/uncorbets/
 template:
-  params:
-    bootswatch: yeti
+  bootstrap: 5
+
