@@ -4,14 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Implements Minimum Torsion for portfolio diversification as
+    described in Meucci, Attilio (2013) &lt;doi:10.2139/ssrn.2276632&gt;.">
 <title>Uncorrelated Bets via Minimum Torsion Algorithm • uncorbets</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Uncorrelated Bets via Minimum Torsion Algorithm">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Uncorrelated Bets via Minimum Torsion Algorithm">
 <meta property="og:description" content="Implements Minimum Torsion for portfolio diversification as
     described in Meucci, Attilio (2013) &lt;doi:10.2139/ssrn.2276632&gt;.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -19,215 +20,222 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
-    <div class="container template-home">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">uncorbets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
-      </span>
-    </div>
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="index.html">uncorbets</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1.9000</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="news/index.html">Changelog</a>
+<li class="nav-item">
+  <a class="nav-link" href="news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/Reckziegel/uncorbets/">
-    <span class="fab fa-github fa-lg"></span>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/Reckziegel/uncorbets/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
       </ul>
 </div>
-<!--/.nav-collapse -->
+
+    
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
-
-      
-
-      </header><div class="row">
-  <div class="contents col-md-9">
-<div id="uncorbets" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#uncorbets" class="anchor"></a>uncorbets</h1></div>
+</nav><div class="container template-home">
+<div class="row">
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="uncorbets">uncorbets<a class="anchor" aria-label="anchor" href="#uncorbets"></a>
+</h1></div>
 <!-- badges: start -->
 
-<!-- badges: end -->
-<p>The Euler theorem has been widely used in finance as a way to decompose homogeneous risk measures of degree one. Unfortunately, this decomposition does not isolate the true sources of risk.</p>
-<p>The Minimum Torsion Bets (MTB) offers a solution to this problem: it uses the spectral decomposition to “pick” the uncorrelated factors that are as close as possible to the original variables, among all living matrix rotations.</p>
-<p>The output is a diversification distribution with the following properties: it’s always positive, sums to 1, capture the true sources risk and have an insightful interpretation. The above characteristics put the Effective Number of Minimum Torsion Bets as a generalization of the Marginal Contribution to Risk (MCR).</p>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
+<p>The Euler theorem has found extensive applications in finance, particularly for decomposing homogeneous risk measures of degree one. However, a limitation of this approach is that it doesn’t adequately isolate the true sources of risk within an investment portfolio, thus creating a gap in risk analysis.</p>
+<p>The Minimum Torsion Bets (MTB) method offers a compelling solution to this challenge. Leveraging spectral decomposition, MTB selectively identifies uncorrelated factors that are as close as possible to the original variables among all possible matrix rotations. This approach ensures a refined understanding of the underlying risk structure.</p>
+<p>The results of the MTB method yield a diversification distribution with several noteworthy properties:</p>
+<ul>
+<li>It is always positive, reflecting a constructive aspect of risk management;</li>
+<li>The distribution sums to $1$, maintaining consistency with probabilistic principles;</li>
+<li>It accurately captures the true sources of risk, enabling a more precise and targeted risk management strategy;</li>
+<li>The distribution offers insightful interpretations, adding analytical value to the decision-making process.</li>
+</ul>
+<p>In essence, the Effective Number of Minimum Torsion Bets (ENMTB) extends traditional risk measures by providing a nuanced view of risk diversification, making it a valuable tool for financial professionals seeking to optimize portfolio performance.</p>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Reckziegel/uncorbets">uncorbets</a></span><span class="op">)</span>
-
-<span class="co"># prepare data</span>
-<span class="va">returns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">EuStockMarkets</span><span class="op">)</span><span class="op">)</span>
-<span class="va">covariance</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov</a></span><span class="op">(</span><span class="va">returns</span><span class="op">)</span>
-
-<span class="co"># Minimum Torsion Matrix</span>
-<span class="va">torsion_mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/torsion.html">torsion</a></span><span class="op">(</span><span class="va">covariance</span><span class="op">)</span>
-
-<span class="co"># Prior Allocation (equal weights, for example)</span>
-<span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">returns</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">returns</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># Compute diversification distribution and the diversification level</span>
-<span class="fu"><a href="reference/effective_bets.html">effective_bets</a></span><span class="op">(</span>b <span class="op">=</span> <span class="va">w</span>, sigma <span class="op">=</span> <span class="va">covariance</span>, t <span class="op">=</span> <span class="va">torsion_mat</span><span class="op">)</span>
-<span class="co">#&gt; $p</span>
-<span class="co">#&gt;           [,1]</span>
-<span class="co">#&gt; DAX  0.2673005</span>
-<span class="co">#&gt; SMI  0.2404370</span>
-<span class="co">#&gt; CAC  0.2776369</span>
-<span class="co">#&gt; FTSE 0.2146256</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $enb</span>
-<span class="co">#&gt; [1] 3.980549</span>
-<span class="co"># maximize the effective number of bets (enb)</span>
-<span class="fu"><a href="reference/max_effective_bets.html">max_effective_bets</a></span><span class="op">(</span>x0 <span class="op">=</span> <span class="va">w</span>, sigma <span class="op">=</span> <span class="va">covariance</span>, t <span class="op">=</span> <span class="va">torsion_mat</span><span class="op">)</span>
-<span class="co">#&gt; $weights</span>
-<span class="co">#&gt; [1] 0.2227163 0.2603372 0.2114589 0.3054876</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $enb</span>
-<span class="co">#&gt; [1] 4</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $counts</span>
-<span class="co">#&gt;      nfval ngval</span>
-<span class="co">#&gt; [1,]    47     9</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $lambda_lb</span>
-<span class="co">#&gt;      [,1]</span>
-<span class="co">#&gt; DAX     0</span>
-<span class="co">#&gt; SMI     0</span>
-<span class="co">#&gt; CAC     0</span>
-<span class="co">#&gt; FTSE    0</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $lambda_ub</span>
-<span class="co">#&gt;      [,1]</span>
-<span class="co">#&gt; DAX     0</span>
-<span class="co">#&gt; SMI     0</span>
-<span class="co">#&gt; CAC     0</span>
-<span class="co">#&gt; FTSE    0</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $lambda_eq</span>
-<span class="co">#&gt; [1] 1.162481e-06</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $gradient</span>
-<span class="co">#&gt;               [,1]</span>
-<span class="co">#&gt; DAX   1.966953e-06</span>
-<span class="co">#&gt; SMI  -4.768372e-06</span>
-<span class="co">#&gt; CAC   8.940697e-06</span>
-<span class="co">#&gt; FTSE -3.337860e-06</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $hessian</span>
-<span class="co">#&gt;             DAX        SMI        CAC       FTSE</span>
-<span class="co">#&gt; DAX   5.3149468 -1.4603802 -1.4893686 -0.5169268</span>
-<span class="co">#&gt; SMI  -1.4603802  5.2212615 -3.6528175 -0.9075766</span>
-<span class="co">#&gt; CAC  -1.4893686 -3.6528175  6.3451210 -0.5218244</span>
-<span class="co">#&gt; FTSE -0.5169268 -0.9075766 -0.5218244  7.6046588</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Reckziegel/uncorbets" class="external-link">uncorbets</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># prepare data</span></span>
+<span><span class="va">returns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html" class="external-link">diff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">EuStockMarkets</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">covariance</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cov</a></span><span class="op">(</span><span class="va">returns</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Minimum Torsion Matrix</span></span>
+<span><span class="va">torsion_mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/torsion.html">torsion</a></span><span class="op">(</span><span class="va">covariance</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Prior Allocation (equal weights, for example)</span></span>
+<span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">returns</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">returns</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Compute diversification distribution and the diversification level</span></span>
+<span><span class="fu"><a href="reference/effective_bets.html">effective_bets</a></span><span class="op">(</span>b <span class="op">=</span> <span class="va">w</span>, sigma <span class="op">=</span> <span class="va">covariance</span>, t <span class="op">=</span> <span class="va">torsion_mat</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $p</span></span>
+<span><span class="co">#&gt;           [,1]</span></span>
+<span><span class="co">#&gt; DAX  0.2673005</span></span>
+<span><span class="co">#&gt; SMI  0.2404370</span></span>
+<span><span class="co">#&gt; CAC  0.2776369</span></span>
+<span><span class="co">#&gt; FTSE 0.2146256</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $enb</span></span>
+<span><span class="co">#&gt; [1] 3.980549</span></span>
+<span></span>
+<span><span class="co"># maximize the effective number of bets (enb)</span></span>
+<span><span class="fu"><a href="reference/max_effective_bets.html">max_effective_bets</a></span><span class="op">(</span>x0 <span class="op">=</span> <span class="va">w</span>, sigma <span class="op">=</span> <span class="va">covariance</span>, t <span class="op">=</span> <span class="va">torsion_mat</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $weights</span></span>
+<span><span class="co">#&gt; [1] 0.2227163 0.2603372 0.2114589 0.3054876</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $enb</span></span>
+<span><span class="co">#&gt; [1] 4</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $counts</span></span>
+<span><span class="co">#&gt;      nfval ngval</span></span>
+<span><span class="co">#&gt; [1,]    47     9</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $lambda_lb</span></span>
+<span><span class="co">#&gt;      [,1]</span></span>
+<span><span class="co">#&gt; DAX     0</span></span>
+<span><span class="co">#&gt; SMI     0</span></span>
+<span><span class="co">#&gt; CAC     0</span></span>
+<span><span class="co">#&gt; FTSE    0</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $lambda_ub</span></span>
+<span><span class="co">#&gt;      [,1]</span></span>
+<span><span class="co">#&gt; DAX     0</span></span>
+<span><span class="co">#&gt; SMI     0</span></span>
+<span><span class="co">#&gt; CAC     0</span></span>
+<span><span class="co">#&gt; FTSE    0</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $lambda_eq</span></span>
+<span><span class="co">#&gt; [1] 1.162481e-06</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $gradient</span></span>
+<span><span class="co">#&gt;               [,1]</span></span>
+<span><span class="co">#&gt; DAX   1.966953e-06</span></span>
+<span><span class="co">#&gt; SMI  -4.768372e-06</span></span>
+<span><span class="co">#&gt; CAC   8.940697e-06</span></span>
+<span><span class="co">#&gt; FTSE -3.337860e-06</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $hessian</span></span>
+<span><span class="co">#&gt;             DAX        SMI        CAC       FTSE</span></span>
+<span><span class="co">#&gt; DAX   5.3149468 -1.4603802 -1.4893686 -0.5169268</span></span>
+<span><span class="co">#&gt; SMI  -1.4603802  5.2212615 -3.6528175 -0.9075766</span></span>
+<span><span class="co">#&gt; CAC  -1.4893686 -3.6528175  6.3451210 -0.5218244</span></span>
+<span><span class="co">#&gt; FTSE -0.5169268 -0.9075766 -0.5218244  7.6046588</span></span></code></pre></div>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>Install the released version from CRAN with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"uncorbets"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"uncorbets"</span><span class="op">)</span></span></code></pre></div>
 <p>Install the development version of <code>uncorbets</code> from github with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Reckziegel/uncorbets"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Reckziegel/uncorbets"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="references" class="section level2">
-<h2 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h2>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
 <ul>
-<li><p>Meucci, Attilio and Santangelo, Alberto and Deguest, Romain, Risk Budgeting and Diversification Based on Optimized Uncorrelated Factors (November 10, 2015). Available at SSRN: <a href="https://www.ssrn.com/abstract=2276632" class="uri">https://www.ssrn.com/abstract=2276632</a> or <a href="http://dx.doi.org/10.2139/ssrn.2276632" class="uri">http://dx.doi.org/10.2139/ssrn.2276632</a></p></li>
-<li><p>Attilio Meucci (2021). Portfolio Diversification Based on Optimized Uncorrelated Factors (<a href="https://www.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors" class="uri">https://www.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors</a>), MATLAB Central File Exchange. Retrieved July 8, 2021.</p></li>
+<li><p>Meucci, Attilio and Santangelo, Alberto and Deguest, Romain, Risk Budgeting and Diversification Based on Optimized Uncorrelated Factors (November 10, 2015). Available at SSRN: <a href="https://www.ssrn.com/abstract=2276632" class="external-link uri">https://www.ssrn.com/abstract=2276632</a> or <a href="http://dx.doi.org/10.2139/ssrn.2276632" class="external-link uri">http://dx.doi.org/10.2139/ssrn.2276632</a></p></li>
+<li><p>Attilio Meucci (2021). Portfolio Diversification Based on Optimized Uncorrelated Factors (<a href="https://www.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors" class="external-link uri">https://www.mathworks.com/matlabcentral/fileexchange/43245-portfolio-diversi-cation-based-on-optimized-uncorrelated-factors</a>), MATLAB Central File Exchange. Retrieved July 8, 2021.</p></li>
 </ul>
 </div>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="links">
-<h2>Links</h2>
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=uncorbets">https://​cloud.r-project.org/​package=uncorbets</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/Reckziegel/uncorbets/">https://​github.com/​Reckziegel/​uncorbets/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/Reckziegel/uncorbets/issues">https://​github.com/​Reckziegel/​uncorbets/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=uncorbets" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/Reckziegel/uncorbets/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/Reckziegel/uncorbets/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+<li><a href="SUPPORT.html">Getting help</a></li>
 </ul>
 </div>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing uncorbets</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Bernardo Reckziegel <br><small class="roles"> Author, maintainer, copyright holder </small>  </li>
+<li>Bernardo Reckziegel <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://codecov.io/gh/Reckziegel/uncorbets?branch=main"><img src="https://codecov.io/gh/Reckziegel/uncorbets/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://github.com/Reckziegel/uncorbets/actions"><img src="https://github.com/Reckziegel/uncorbets/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://codecov.io/gh/Reckziegel/uncorbets?branch=main" class="external-link"><img src="https://codecov.io/gh/Reckziegel/uncorbets/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/Reckziegel/uncorbets/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/Reckziegel/uncorbets/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
-</div>
-</div>
 
-
-      <footer><div class="copyright">
-  <p>Developed by Bernardo Reckziegel.</p>
+  </aside>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+
+    <footer><div class="pkgdown-footer-left">
+  <p></p>
+<p>Developed by Bernardo Reckziegel.</p>
 </div>
 
-      </footer>
+<div class="pkgdown-footer-right">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+</div>
+
+    </footer>
 </div>
 
   
 
+  
 
   </body>
 </html>
