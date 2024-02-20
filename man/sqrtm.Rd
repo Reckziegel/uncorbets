@@ -7,7 +7,7 @@
 sqrtm(x)
 }
 \arguments{
-\item{A}{A square matrix.}
+\item{x}{A square matrix.}
 }
 \value{
 A squared \code{matrix}.

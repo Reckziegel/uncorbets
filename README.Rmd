@@ -16,8 +16,7 @@ knitr::opts_chunk$set(
 # uncorbets
 
 <!-- badges: start -->
-
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![Codecov test coverage](https://codecov.io/gh/Reckziegel/uncorbets/branch/main/graph/badge.svg)](https://codecov.io/gh/Reckziegel/uncorbets?branch=main)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![Codecov test coverage](https://codecov.io/gh/Reckziegel/uncorbets/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Reckziegel/uncorbets?branch=main)
 [![R-CMD-check](https://github.com/Reckziegel/uncorbets/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Reckziegel/uncorbets/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
@@ -27,10 +26,10 @@ The Minimum Torsion Bets (MTB) method offers a compelling solution to this chall
 
 The results of the MTB method yield a diversification distribution with several noteworthy properties:
 
--   It is always positive, reflecting a constructive aspect of risk management;
--   The distribution sums to \$1\$, maintaining consistency with probabilistic principles;
--   It accurately captures the true sources of risk, enabling a more precise and targeted risk management strategy;
--   The distribution offers insightful interpretations, adding analytical value to the decision-making process.
+- It is always positive, reflecting a constructive aspect of risk management;
+- The distribution sums to $1$, maintaining consistency with probabilistic principles;
+- It accurately captures the true sources of risk, enabling a more precise and targeted risk management strategy;
+- The distribution offers insightful interpretations, adding analytical value to the decision-making process.
 
 In essence, the Effective Number of Minimum Torsion Bets (ENMTB) extends traditional risk measures by providing a nuanced view of risk diversification, making it a valuable tool for financial professionals seeking to optimize portfolio performance.
 

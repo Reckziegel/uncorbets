@@ -8,7 +8,7 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![Codecov test
-coverage](https://codecov.io/gh/Reckziegel/uncorbets/branch/main/graph/badge.svg)](https://codecov.io/gh/Reckziegel/uncorbets?branch=main)
+coverage](https://codecov.io/gh/Reckziegel/uncorbets/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Reckziegel/uncorbets?branch=main)
 [![R-CMD-check](https://github.com/Reckziegel/uncorbets/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Reckziegel/uncorbets/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
@@ -29,7 +29,7 @@ several noteworthy properties:
 
 - It is always positive, reflecting a constructive aspect of risk
   management;
-- The distribution sums to \$1\$, maintaining consistency with
+- The distribution sums to $1$, maintaining consistency with
   probabilistic principles;
 - It accurately captures the true sources of risk, enabling a more
   precise and targeted risk management strategy;

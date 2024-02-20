@@ -2,7 +2,7 @@
 #'
 #' This function returns the square root of a quadratic matrix.
 #'
-#' @param A A square matrix.
+#' @param x A square matrix.
 #'
 #' @return A squared \code{matrix}.
 #'
