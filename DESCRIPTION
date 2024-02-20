@@ -1,7 +1,7 @@
 Type: Package
 Package: uncorbets
 Title: Uncorrelated Bets via Minimum Torsion Algorithm
-Version: 0.1.1.9000
+Version: 0.1.2
 Authors@R: 
     c(person(given  = "Bernardo",
              family = "Reckziegel",
