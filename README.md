@@ -10,6 +10,10 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![Codecov test
 coverage](https://codecov.io/gh/Reckziegel/uncorbets/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Reckziegel/uncorbets?branch=main)
 [![R-CMD-check](https://github.com/Reckziegel/uncorbets/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Reckziegel/uncorbets/actions/workflows/R-CMD-check.yaml)
+[![CRAN RStudio mirror
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/uncorbets?color=blue)](https://r-pkg.org/pkg/uncorbets)
+[![CRAN RStudio mirror
+downloads](https://cranlogs.r-pkg.org/badges/last-month/uncorbets?color=blue)](https://r-pkg.org/pkg/uncorbets)
 <!-- badges: end -->
 
 The Euler theorem has found extensive applications in finance,

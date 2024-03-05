@@ -18,6 +18,8 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![Codecov test coverage](https://codecov.io/gh/Reckziegel/uncorbets/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Reckziegel/uncorbets?branch=main)
 [![R-CMD-check](https://github.com/Reckziegel/uncorbets/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Reckziegel/uncorbets/actions/workflows/R-CMD-check.yaml)
+[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/uncorbets?color=blue)](https://r-pkg.org/pkg/uncorbets)
+[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/last-month/uncorbets?color=blue)](https://r-pkg.org/pkg/uncorbets)
 <!-- badges: end -->
 
 The Euler theorem has found extensive applications in finance, particularly for decomposing homogeneous risk measures of degree one. However, a limitation of this approach is that it doesn't adequately isolate the true sources of risk within an investment portfolio, thus creating a gap in risk analysis.
